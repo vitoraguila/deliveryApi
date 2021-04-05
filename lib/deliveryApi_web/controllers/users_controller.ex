@@ -21,6 +21,14 @@ defmodule DeliveryApiWeb.UsersController do
     end
   end
 
+  def delete(conn, %{"id" => id}) do
+    with {:ok, %User{}} <- DeliveryApi.delete_user(id) do
+      conn
+      |> put_status(:no_content)
+      |> text("")
+    end
+  end
+
   def index(conn, _params) do
     users = DeliveryApi.get_all()
     json(conn, users)
