@@ -1,4 +1,6 @@
 defmodule DeliveryApi do
+  alias DeliveryApi.Items.Create, as: ItemCreate
+
   alias DeliveryApi.Users.Create, as: UserCreate
   alias DeliveryApi.Users.Delete, as: UserDelete
   alias DeliveryApi.Users.Get, as: UserGet
@@ -10,4 +12,6 @@ defmodule DeliveryApi do
   defdelegate delete_user(id), to: UserDelete, as: :call
   defdelegate get_all(), to: UserGetAll, as: :all
   defdelegate update_user(params), to: UserUpdate, as: :call
+
+  defdelegate create_item(params), to: ItemCreate, as: :call
 end
